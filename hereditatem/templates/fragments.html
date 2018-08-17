@@ -1,0 +1,37 @@
+{% extends 'generic.html' %} 
+{% load staticfiles %}
+{% block content %}
+<div class="row columns">
+    <h1 class="page-title">{{ page_title }}</h1>
+</div>
+
+<div class="row small-up-2 medium-up-3 large-up-4">
+    <div class="column column-block">
+        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
+    </div>
+    <div class="column column-block">
+        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
+    </div>
+    <div class="column column-block">
+        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
+    </div>
+    <div class="column column-block">
+        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
+    </div>
+    <div class="column column-block">
+        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
+    </div>
+    <div class="column column-block">
+        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
+    </div>
+</div>
+
+<a class="button float-bottom-button"  
+    id="add-fragment-btn" aria-valuetext="Add new Fragment">
+    <i class="fa fa-plus"/>
+</button>
+{% endblock %}
+{% block contentscripts %}
+
+<script src="{% static 'hereditatem/scripts/fragments.js' %}"></script>  
+{% endblock %}
