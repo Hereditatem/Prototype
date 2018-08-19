@@ -1,37 +1,22 @@
-{% extends 'generic.html' %} 
-{% load staticfiles %}
-{% block content %}
+{% extends 'generic.html' %} {% load staticfiles %} {% block content %}
 <div class="row columns">
     <h1 class="page-title">{{ page_title }}</h1>
 </div>
 
 <div class="row small-up-2 medium-up-3 large-up-4">
+    {% for fragment in object_list %}
     <div class="column column-block">
-        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
+        <img src="{{ fragment.front_scan.url }}" class="thumbnail" alt="">
     </div>
-    <div class="column column-block">
-        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
-    </div>
-    <div class="column column-block">
-        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
-    </div>
-    <div class="column column-block">
-        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
-    </div>
-    <div class="column column-block">
-        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
-    </div>
-    <div class="column column-block">
-        <img src="{% static 'hereditatem/images/fragment1.png' %}" class="thumbnail" alt="">
-    </div>
+    {% endfor %}
 </div>
+{% url 'add-fragment' as fragment_url %}
 
-<a class="button float-bottom-button"  
-    id="add-fragment-btn" aria-valuetext="Add new Fragment">
-    <i class="fa fa-plus"/>
-</button>
-{% endblock %}
-{% block contentscripts %}
+<a class="button float-bottom-button" href="/hereditatem/fragment/" id="add-fragment-btn">
+    <i class="fa fa-plus"></i>
+</a>
 
-<script src="{% static 'hereditatem/scripts/fragments.js' %}"></script>  
+{% endblock %} {% block contentscripts %}
+
+<script src="{% static 'hereditatem/scripts/fragments.js' %}"></script>
 {% endblock %}

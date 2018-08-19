@@ -1,7 +1,50 @@
-{% extends 'generic.html' %} 
-{% load staticfiles %}
-{% block content %}
+{% extends 'generic.html' %} {% load staticfiles %} {% block content %}
 <div class="row columns">
     <h1 class="page-title">{{ page_title }}</h1>
 </div>
+
+
+{% if error_message %}
+<p>
+    <strong>{{ error_message }}</strong>
+</p>{% endif %}
+
+<form action="{% url 'fragment-details' fragment.id %}" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="columns medium-6">
+            <label for="frontscan" class="button">Upload Front Scan</label>
+            <input type="file" id="frontscan" class="show-for-sr" name="frontscan" required>
+        </div>
+        <div class="columns medium-6">
+            <label for="backscan" class="button">Upload Back Scan</label>
+            <input type="file" id="backscan" class="show-for-sr" name="backscan" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns medium-4">
+            <label>
+                <strong>Width</strong> (mm)
+                <input type="number" name="width" required>
+            </label>
+        </div>
+        <div class="columns medium-4">
+            <label>
+                <strong>Height</strong> (mm)
+                <input type="number" name="height" required>
+            </label>
+        </div>
+        <div class="columns medium-4">
+            <label>
+                <strong>Thickness</strong> (mm)
+                <input type="number" name="thickness" required>
+            </label>
+        </div>
+    </div>
+    <div class="row columns">
+        <input type="submit" class="button" />
+    </div>
+
+</form>
+
 {% endblock %}
