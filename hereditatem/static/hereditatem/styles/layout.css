@@ -68,3 +68,26 @@ h5 {
   -moz-box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.3);
 }
+
+.thumbnail-frame {
+  padding-top: 100%;
+  position: relative;
+  padding-top: 100%;
+  position: relative;
+  border: 1px silver solid;
+  border-radius: 10px;
+}
+
+.thumbnail-frame:hover{
+  border: 1px #444494 solid;
+  background: #d6d6e0;
+}
+
+.thumbnail-img {
+  position: absolute;
+  padding: 3px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

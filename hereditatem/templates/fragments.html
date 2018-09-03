@@ -6,11 +6,14 @@
 <div class="row small-up-2 medium-up-3 large-up-4">
     {% for fragment in object_list %}
     <div class="column column-block">
-        <img src="{{ fragment.front_scan.url }}" class="thumbnail" alt="">
+        <a href="{% url 'fragment-details' fragment.id %}">
+            <div class="thumbnail-frame">
+                <img class="thumbnail-img" src="{{ fragment.front_scan.url }}" alt="">
+            </div>
+        </a>
     </div>
     {% endfor %}
 </div>
-{% url 'add-fragment' as fragment_url %}
 
 <a class="button float-bottom-button" href="/hereditatem/fragment/" id="add-fragment-btn">
     <i class="fa fa-plus"></i>

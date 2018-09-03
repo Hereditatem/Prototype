@@ -12,6 +12,18 @@
 <form action="{% url 'fragment-details' fragment.id %}" enctype="multipart/form-data" method="post">
     {% csrf_token %}
     <div class="row">
+        {% if fragment %}
+        <div class="columns medium-3 medium-offset-3">
+            <div class="thumbnail-frame">
+                <img class="thumbnail-img" src="{{ fragment.front_scan.url }}" alt="">
+            </div>
+        </div>
+        <div class="columns medium-3 end">
+            <div class="thumbnail-frame">
+                <img class="thumbnail-img" src="{{ fragment.back_scan.url }}" alt="">
+            </div>
+        </div>
+        {% else %}
         <div class="columns medium-6">
             <label for="frontscan" class="button">Upload Front Scan</label>
             <input type="file" id="frontscan" class="show-for-sr" name="frontscan" required>
@@ -20,31 +32,40 @@
             <label for="backscan" class="button">Upload Back Scan</label>
             <input type="file" id="backscan" class="show-for-sr" name="backscan" required>
         </div>
+        {% endif %}
     </div>
     <div class="row">
         <div class="columns medium-4">
             <label>
                 <strong>Width</strong> (mm)
-                <input type="number" name="width" required>
+                <input type="number" name="width" required value="{{ fragment.width }}" {% if fragment %} readonly {% endif %} >
             </label>
         </div>
         <div class="columns medium-4">
             <label>
                 <strong>Height</strong> (mm)
-                <input type="number" name="height" required>
+                <input type="number" name="height" required value="{{ fragment.height }}" {% if fragment %} readonly {% endif %}>
             </label>
         </div>
         <div class="columns medium-4">
             <label>
                 <strong>Thickness</strong> (mm)
-                <input type="number" name="thickness" required>
+                <input type="number" name="thickness" required value="{{ fragment.thickness }}" {% if fragment %} readonly {% endif %}>
             </label>
         </div>
     </div>
-    <div class="row columns">
-        <input type="submit" class="button" />
+    {% if not fragment %} 
+    <div class="row ">
+        <div class="columns medium-2">
+            <input type="submit" class="button" />
+        </div>
     </div>
+    {% endif %}
 
 </form>
 
+{% endblock %}
+
+{% block contentscripts %}
+<script src="{% static 'hereditatem/scripts/fragment.js' %}"></script>  
 {% endblock %}
